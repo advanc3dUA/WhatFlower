@@ -11,24 +11,32 @@ import SwiftyJSON
 
 struct FlowerLogic {
     
-    func parseJSON(for flower: String) {
+    mutating func parseJSON(for flower: String) {
+        guard let flowerURL = createURL(with: flower) else {
+            fatalError("Unable to create valid URL with flower")
+        }
+    }
+    
+    fileprivate func createURL(with flower: String) -> URL? {
         let wikiURL = "https://en.wikipedia.org/w/api.php"
-        let flowerName = flower.replacingOccurrences(of: " ", with: "%")
+        let flowerName = flower.replacingOccurrences(of: " ", with: "%20")
         
         let parameters : [String:String] = [
-        "format" : "json",
-        "action" : "query",
-        "prop" : "extracts",
-        "exintro" : "",
-        "explaintext" : "",
-        "indexpageids" : "",
-        "redirects" : "1",
-        "titles" : flowerName
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts",
+            "exintro" : "",
+            "explaintext" : "",
+            "indexpageids" : "",
+            "redirects" : "1",
+            "titles" : flowerName
         ]
         
-        var flowerURL = wikiURL + "&"
+        var flowerURLString = wikiURL + "?&"
         for parameter in parameters {
-            flowerURL += parameter.key + "=" + parameter.value + "&"
+            flowerURLString += parameter.key + "=" + parameter.value + "&"
         }
+        print("String =", flowerURLString)
+        return URL(string: flowerURLString)
     }
 }
