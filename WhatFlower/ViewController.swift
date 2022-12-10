@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             }
             
             if let firstResult = result.first?.identifier {
-                self.title = firstResult
+                self.title = firstResult.capitalized
             }
         }
         
