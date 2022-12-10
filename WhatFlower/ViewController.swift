@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var photoImageView: UIImageView!
     private var imagePickerController = UIImagePickerController()
+    private var flowerLogic = FlowerLogic()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,16 @@ class ViewController: UIViewController {
             }
             
             if let firstResult = result.first?.identifier {
-                self.title = firstResult.capitalized
+                var modifiedResult = firstResult.capitalized
+                
+                for _ in 0...1 {
+                    modifiedResult.remove(at: modifiedResult.startIndex)
+                }
+                
+                modifiedResult.removeLast()
+                
+                self.title = modifiedResult
+                self.flowerLogic.parseJSON(for: modifiedResult)
             }
         }
         
