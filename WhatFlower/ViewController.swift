@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImagePickerController()
-        self.title = "What Flower?"
+        self.title = "What is this flower?"
     }
     
     

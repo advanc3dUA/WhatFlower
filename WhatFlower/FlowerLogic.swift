@@ -13,11 +13,11 @@ struct FlowerLogic {
     
     func requestInfo(for flower: String, completion: @escaping (String) -> Void) {
         print("started requestInfo")
-        guard let flowerURL = createURL(with: flower) else {
+        guard let flowerURLString = createURL(with: flower) else {
             fatalError("Unable to create valid URL with flower")
         }
         
-        AF.request(flowerURL).response { response in
+        AF.request(flowerURLString).response { response in
             guard let result = response.data else {
                 fatalError("Couldn't get response.data with Alamofire")
             }
@@ -41,7 +41,7 @@ struct FlowerLogic {
         let pathToDescription: [JSONSubscriptType] = ["query", "pages", pageID, "extract"]
         
         if let description = json[pathToDescription].string {
-            print(description)
+            print(description)            
             return description
         } else {
             print(json[pathToDescription].error!)
@@ -58,12 +58,13 @@ struct FlowerLogic {
         let parameters : [String:String] = [
             "format" : "json",
             "action" : "query",
-            "prop" : "extracts",
+            "prop" : "extracts%7Cpageimages",
             "exintro" : "",
             "explaintext" : "",
             "indexpageids" : "",
             "redirects" : "1",
-            "titles" : flowerName
+            "titles" : flowerName,
+            "pithumbsize" : "500"
         ]
         
         var flowerURLString = wikiURL + "?&"
