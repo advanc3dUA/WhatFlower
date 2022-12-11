@@ -8,6 +8,7 @@
 import UIKit
 import CreateML
 import Vision
+import SDWebImage
 
 class ViewController: UIViewController {
     
@@ -55,8 +56,11 @@ class ViewController: UIViewController {
                 
                 self.title = modifiedResult
                 
-                self.flowerLogic.requestInfo(for: modifiedResult) { description in
+                self.flowerLogic.requestInfo(for: modifiedResult) { description, flowerURLString in
                     DispatchQueue.main.async {
+                        if flowerURLString != nil {
+                            self.photoImageView.sd_setImage(with: URL(string: flowerURLString!))
+                        }
                         self.descriptionTextView.text = description
                     }
                 }

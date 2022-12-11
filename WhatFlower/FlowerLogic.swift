@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct FlowerLogic {
     
-    func requestInfo(for flower: String, completion: @escaping (String) -> Void) {
+    func requestInfo(for flower: String, completion: @escaping ((String, String?)) -> Void) {
         print("started requestInfo")
         guard let flowerURLString = createURL(with: flower) else {
             fatalError("Unable to create valid URL with flower")
@@ -25,7 +25,7 @@ struct FlowerLogic {
         }
     }
     
-    func parseJSON(with data: Data) -> String {
+    func parseJSON(with data: Data) -> (String, String?) {
         print("started parseJSON")
         guard let json = try? JSON(data: data) else {
             fatalError("Couldn't get JSON while parsing the result")
@@ -36,17 +36,18 @@ struct FlowerLogic {
             fatalError("Couldn't get pageID")
         }
         
-        print(pageID)
-        
         let pathToDescription: [JSONSubscriptType] = ["query", "pages", pageID, "extract"]
         
         if let description = json[pathToDescription].string {
-            print(description)            
-            return description
+            if let photoURLString = json["query"]["pages"][pageID]["thumbnail"]["source"].string {
+                return (description, photoURLString)
+            } else {
+                return (description, nil)
+            }
         } else {
             print(json[pathToDescription].error!)
         }
-        return "Wikipedia has no description for this."
+        return ("Wikipedia has no description for this.", nil)
     }
     
     
