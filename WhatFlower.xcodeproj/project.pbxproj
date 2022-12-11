@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF567E3E29460C49004434E4 /* VC+ImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF567E3D29460C49004434E4 /* VC+ImagePickerControllerDelegate.swift */; };
+		BF567E4029460CC0004434E4 /* VC+NavControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF567E3F29460CC0004434E4 /* VC+NavControllerDelegate.swift */; };
 		BF9A064B2941E60F00BFC42D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A064A2941E60F00BFC42D /* AppDelegate.swift */; };
 		BF9A064D2941E60F00BFC42D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A064C2941E60F00BFC42D /* SceneDelegate.swift */; };
 		BF9A064F2941E60F00BFC42D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A064E2941E60F00BFC42D /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 		4E4CFDEF6AF84FBBD465C669 /* Pods-WhatFlower.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatFlower.debug.xcconfig"; path = "Target Support Files/Pods-WhatFlower/Pods-WhatFlower.debug.xcconfig"; sourceTree = "<group>"; };
 		8C8FD6CA8B2CBA089FF965F9 /* Pods-WhatFlower.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatFlower.release.xcconfig"; path = "Target Support Files/Pods-WhatFlower/Pods-WhatFlower.release.xcconfig"; sourceTree = "<group>"; };
 		AFB945BB7EED8A829CE75DAA /* Pods_WhatFlower.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatFlower.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF567E3D29460C49004434E4 /* VC+ImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+ImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		BF567E3F29460CC0004434E4 /* VC+NavControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+NavControllerDelegate.swift"; sourceTree = "<group>"; };
 		BF9A06472941E60F00BFC42D /* WhatFlower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatFlower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9A064A2941E60F00BFC42D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF9A064C2941E60F00BFC42D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +50,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF567E39294606F0004434E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFD054C0294495D8002D22FC /* FlowerLogic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF567E3A294606FD004434E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A064E2941E60F00BFC42D /* ViewController.swift */,
+				BF567E3F29460CC0004434E4 /* VC+NavControllerDelegate.swift */,
+				BF567E3D29460C49004434E4 /* VC+ImagePickerControllerDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF567E3B29460721004434E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A06502941E60F00BFC42D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF567E3C2946072E004434E4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A064A2941E60F00BFC42D /* AppDelegate.swift */,
+				BF9A064C2941E60F00BFC42D /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		BF9A063E2941E60F00BFC42D = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +106,10 @@
 		BF9A06492941E60F00BFC42D /* WhatFlower */ = {
 			isa = PBXGroup;
 			children = (
-				BF9A064A2941E60F00BFC42D /* AppDelegate.swift */,
-				BF9A064C2941E60F00BFC42D /* SceneDelegate.swift */,
-				BF9A064E2941E60F00BFC42D /* ViewController.swift */,
-				BFD054C0294495D8002D22FC /* FlowerLogic.swift */,
-				BF9A06502941E60F00BFC42D /* Main.storyboard */,
+				BF567E3C2946072E004434E4 /* App */,
+				BF567E3A294606FD004434E4 /* Controller */,
+				BF567E39294606F0004434E4 /* Model */,
+				BF567E3B29460721004434E4 /* View */,
 				BF9A06532941E61000BFC42D /* Assets.xcassets */,
 				BF9A06552941E61000BFC42D /* LaunchScreen.storyboard */,
 				BF9A065E2941E62800BFC42D /* FlowerClassifier.mlmodel */,
@@ -213,10 +251,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD054C1294495D8002D22FC /* FlowerLogic.swift in Sources */,
+				BF567E4029460CC0004434E4 /* VC+NavControllerDelegate.swift in Sources */,
 				BF9A065F2941E62800BFC42D /* FlowerClassifier.mlmodel in Sources */,
 				BF9A064F2941E60F00BFC42D /* ViewController.swift in Sources */,
 				BF9A064B2941E60F00BFC42D /* AppDelegate.swift in Sources */,
 				BF9A064D2941E60F00BFC42D /* SceneDelegate.swift in Sources */,
+				BF567E3E29460C49004434E4 /* VC+ImagePickerControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

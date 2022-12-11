@@ -13,7 +13,7 @@ import SDWebImage
 class ViewController: UIViewController {
     
     @IBOutlet weak var photoImageView: UIImageView!
-    private var imagePickerController = UIImagePickerController()
+    var imagePickerController = UIImagePickerController()
     private var flowerLogic = FlowerLogic()
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         present(imagePickerController, animated: true)
     }
     
-    private func detect(image: CIImage) {
+    func detect(image: CIImage) {
         let mlModelConfiguration = MLModelConfiguration()
         guard let model = try? VNCoreMLModel(for: FlowerClassifier(configuration: mlModelConfiguration).model) else {
             fatalError("Error creating while creating a model")
@@ -48,14 +48,17 @@ class ViewController: UIViewController {
             if let firstResult = result.first?.identifier {
                 var modifiedResult = firstResult.capitalized
                 
+                // Removing of ' & space from the beginning of identifier
                 for _ in 0...1 {
                     modifiedResult.remove(at: modifiedResult.startIndex)
                 }
                 
+                // Removing ' from the end of identifier
                 modifiedResult.removeLast()
                 
                 self.title = modifiedResult
                 
+                // Core logic of the app execution
                 self.flowerLogic.requestInfo(for: modifiedResult) { description, flowerURLString in
                     DispatchQueue.main.async {
                         if flowerURLString != nil {
@@ -74,24 +77,4 @@ class ViewController: UIViewController {
             fatalError(error.localizedDescription)
         }
     }
-}
-
-extension ViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.photoImageView.image = selectedImage
-            
-            guard let ciImage = CIImage(image: selectedImage) else {
-                fatalError("Error creating ciImage from UIImage")
-            }
-            
-            detect(image: ciImage)
-            imagePickerController.dismiss(animated: true)
-        }
-    }
-}
-
-extension ViewController: UINavigationControllerDelegate {
-    
 }

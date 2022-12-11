@@ -12,7 +12,7 @@ import SwiftyJSON
 struct FlowerLogic {
     
     func requestInfo(for flower: String, completion: @escaping ((String, String?)) -> Void) {
-        print("started requestInfo")
+
         guard let flowerURLString = createURL(with: flower) else {
             fatalError("Unable to create valid URL with flower")
         }
@@ -26,7 +26,7 @@ struct FlowerLogic {
     }
     
     func parseJSON(with data: Data) -> (String, String?) {
-        print("started parseJSON")
+        
         guard let json = try? JSON(data: data) else {
             fatalError("Couldn't get JSON while parsing the result")
         }
@@ -72,8 +72,6 @@ struct FlowerLogic {
         for parameter in parameters {
             flowerURLString += parameter.key + "=" + parameter.value + "&"
         }
-        
-        print(flowerURLString)
         
         return flowerURLString
     }

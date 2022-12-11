@@ -21,14 +21,14 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SIU-Sp-qdo">
                                 <rect key="frame" x="16" y="479" width="361" height="339"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LnV-md-VR9" secondAttribute="bottom" constant="347" id="51i-OP-MWZ"/>
                             <constraint firstItem="LnV-md-VR9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OQD-1w-Mng"/>
@@ -42,6 +42,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mMg-9d-sT1">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="mBe-xK-dgV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="takePhotoPressed:" destination="BYZ-38-t0r" id="QJo-Vi-nig"/>
                             </connections>
@@ -64,6 +65,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7L-Wj-yCM">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -79,8 +81,8 @@
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
