@@ -19,14 +19,25 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnV-md-VR9">
                                 <rect key="frame" x="0.0" y="103" width="393" height="368"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SIU-Sp-qdo">
+                                <rect key="frame" x="16" y="479" width="361" height="339"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LnV-md-VR9" secondAttribute="bottom" constant="347" id="51i-OP-MWZ"/>
                             <constraint firstItem="LnV-md-VR9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OQD-1w-Mng"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SIU-Sp-qdo" secondAttribute="bottom" id="ZH8-wi-LJw"/>
+                            <constraint firstItem="SIU-Sp-qdo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cxM-Fa-jB3"/>
+                            <constraint firstItem="SIU-Sp-qdo" firstAttribute="top" secondItem="LnV-md-VR9" secondAttribute="bottom" constant="8" symbolic="YES" id="n45-gx-7ES"/>
                             <constraint firstItem="LnV-md-VR9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ndx-1S-dl0"/>
                             <constraint firstItem="LnV-md-VR9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rpt-fc-4Bl"/>
+                            <constraint firstItem="SIU-Sp-qdo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="s45-ld-QQy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mMg-9d-sT1">
@@ -37,6 +48,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionTextView" destination="SIU-Sp-qdo" id="Onc-Df-NQo"/>
                         <outlet property="photoImageView" destination="LnV-md-VR9" id="l9C-92-H5q"/>
                     </connections>
                 </viewController>
@@ -64,6 +76,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     private var imagePickerController = UIImagePickerController()
     private var flowerLogic = FlowerLogic()
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,12 @@ class ViewController: UIViewController {
                 modifiedResult.removeLast()
                 
                 self.title = modifiedResult
-                self.flowerLogic.parseJSON(for: modifiedResult)
+                
+                self.flowerLogic.requestInfo(for: modifiedResult) { description in
+                    DispatchQueue.main.async {
+                        self.descriptionTextView.text = description
+                    }
+                }
             }
         }
         

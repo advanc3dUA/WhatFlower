@@ -11,7 +11,8 @@ import SwiftyJSON
 
 struct FlowerLogic {
     
-    func parseJSON(for flower: String) {
+    func requestInfo(for flower: String, completion: @escaping (String) -> Void) {
+        print("started requestInfo")
         guard let flowerURL = createURL(with: flower) else {
             fatalError("Unable to create valid URL with flower")
         }
@@ -20,11 +21,12 @@ struct FlowerLogic {
             guard let result = response.data else {
                 fatalError("Couldn't get response.data with Alamofire")
             }
-            self.parse1JSON(with: result)
+            completion(self.parseJSON(with: result))
         }
     }
     
-    func parse1JSON(with data: Data) {
+    func parseJSON(with data: Data) -> String {
+        print("started parseJSON")
         guard let json = try? JSON(data: data) else {
             fatalError("Couldn't get JSON while parsing the result")
         }
@@ -37,11 +39,16 @@ struct FlowerLogic {
         print(pageID)
         
         let pathToDescription: [JSONSubscriptType] = ["query", "pages", pageID, "extract"]
-        let description = json[pathToDescription].stringValue
-
-        print(description)
         
+        if let description = json[pathToDescription].string {
+            print(description)
+            return description
+        } else {
+            print(json[pathToDescription].error!)
+        }
+        return "Wikipedia has no description for this."
     }
+    
     
     
     fileprivate func createURL(with flower: String) -> String? {
@@ -63,6 +70,8 @@ struct FlowerLogic {
         for parameter in parameters {
             flowerURLString += parameter.key + "=" + parameter.value + "&"
         }
+        
+        print(flowerURLString)
         
         return flowerURLString
     }
