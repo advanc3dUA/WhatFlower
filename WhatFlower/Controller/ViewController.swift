@@ -48,14 +48,12 @@ class ViewController: UIViewController {
             if let firstResult = result.first?.identifier {
                 var modifiedResult = firstResult.capitalized
                 
-                // Removing of ' & space from the beginning of identifier
-                for _ in 0...1 {
-                    modifiedResult.remove(at: modifiedResult.startIndex)
-                }
+                // Removing of ' from the identifier
+                modifiedResult.removeAll { $0 == "'" }
                 
-                // Removing ' from the end of identifier
-                modifiedResult.removeLast()
-                
+                // Removing space from the start of identifier
+                modifiedResult.remove(at: modifiedResult.startIndex)
+
                 self.title = modifiedResult
                 
                 // Core logic of the app execution
